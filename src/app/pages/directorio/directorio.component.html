@@ -1,0 +1,122 @@
+<div class="container">
+    <div class="row">
+        <div class="directorio mt-4 mb-4">
+            <div class="col-sm-6">
+                <p>Le invitamos a consultar nuestro directorio de miembros de la Sociedad Venezolana de Cirugía Bucomaxilofacial. Introduzca el nombre del profesional o seleccione cualquiera de los criterios de búsqueda -- especialidad o localidad --, para
+                    obtener los resultados disponibles y datos de contacto.</p>
+                <br>
+                <p>Si requiere mayor información, no dude en consultarnos escribiéndonos <a href="/contacto.php">aquí</a> y con gusto le asistiremos.</p><br>
+            </div>
+
+            <div class="buscador col-sm-6">
+                <form class="form-horizontal" ngNativeValidate (ngSubmit)="buscarDirectorio()">
+                    <fieldset>
+
+                        <div class="form-group">
+                            <div class="col-xs-12 ">
+                                <input #input ng-model="nombre" (keyup)="buscarDirectorio(input.value)" type="text" name="" class="form-control" placeholder="Buscar medico...">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-12 ">
+                                <select name="especialidad" class="form-control">
+                                <option value="">--Seleccione especialidad--</option>
+                                <option *ngFor="let especialidad of especialidades" [value]="especialidad._id">
+                                    {{especialidad.nombre}}
+                                </option>
+                       </select>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <div class="col-xs-12 ">
+                                <select name="estado" class="form-control cuadroInput">
+                           <option value="">--Seleccione el estado--</option>
+                           <option *ngFor="let estado of estados" [value]="estado._id">
+                            {{estado.nombre}}
+                          </option>
+                       </select>
+                            </div>
+                        </div>
+
+
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-xs-12  control-label" for="submit"></label>
+                            <div class="col-xs-12 ">
+                                <button type="submit" (click)="buscarDirectorio(input.value)" name="submit" class="btn btn-outline-primary btn-block">Buscar</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 fr-view" *ngFor=" let directorio of directorios | paginate: { itemsPerPage: count, currentPage: p }">
+            <!--div class="col-sm-6 col-md-4 fr-view" *ngFor=" let directorio of directorios"-->
+            <div class=" card ">
+                <div class="card-body ">
+                    <h3>{{directorio.userID}}</h3>
+                    <h5>{{directorio.nombre}}</h5>
+                    <div class="clear"></div> <br>
+                    <p><b>Especialidad</b>: {{directorio.especialidad}}</p>
+                    <p><b>Universidad</b>: {{directorio.universidad}}</p>
+                    <p><b>Año</b>: {{directorio.ano}}</p>
+                    <p><b>Web</b>: {{directorio.website}}</p>
+                    <p><b>Email</b>: {{directorio.email}}</p>
+                    <p [innerHTML]="directorio.direccion | keepHtml"></p>
+                    <p><b>Estado</b>: {{directorio.estado}}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4 mb-4 alphabet">
+    <button class="btn" value="" onclick="filter(event);">All</button>
+    <button class="btn" value="A" onclick="filter(event);">A</button>
+    <button class="btn" value="B" onclick="filter(event);">B</button>
+    <button class="btn" value="C" onclick="filter(event);">C</button>
+    <button class="btn" value="D" onclick="filter(event);">D</button>
+    <button class="btn" value="E" onclick="filter(event);">E</button>
+    <button class="btn" value="F" onclick="filter(event);">F</button>
+    <button class="btn" value="G" onclick="filter(event);">G</button>
+    <button class="btn" value="H" onclick="filter(event);">H</button>
+    <button class="btn" value="I" onclick="filter(event);">I</button>
+    <button class="btn" value="J" onclick="filter(event);">J</button>
+    <button class="btn" value="K" onclick="filter(event);">K</button>
+    <button class="btn" value="L" onclick="filter(event);">L</button>
+    <button class="btn" value="M" onclick="filter(event);">M</button>
+    <button class="btn" value="N" onclick="filter(event);">N</button>
+    <button class="btn" value="O" onclick="filter(event);">O</button>
+    <button class="btn" value="P" onclick="filter(event);">P</button>
+    <button class="btn" value="Q" onclick="filter(event);">Q</button>
+    <button class="btn" value="R" onclick="filter(event);">R</button>
+    <button class="btn" value="S" onclick="filter(event);">S</button>
+    <button class="btn" value="T" onclick="filter(event);">T</button>
+    <button class="btn" value="U" onclick="filter(event);">U</button>
+    <button class="btn" value="V" onclick="filter(event);">V</button>
+    <button class="btn" value="W" onclick="filter(event);">W</button>
+    <button class="btn" value="X" onclick="filter(event);">X</button>
+    <button class="btn" value="Y" onclick="filter(event);">Y</button>
+    <button class="btn" value="Z" onclick="filter(event);">Z</button>
+</div>
+
+<!--Including the pagination control.-->
+<div class="container mt-4 mb-4">
+    <div class="text-center">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>

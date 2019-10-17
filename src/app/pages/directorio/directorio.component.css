@@ -1,0 +1,55 @@
+.card {
+    margin-bottom: 20px;
+    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, .11), 0 5px 15px 0 rgba(0, 0, 0, .08);
+    border: none;
+    height: 280px;
+    overflow: hidden;
+    overflow-y: scroll;
+    transition: all .3s ease-in;
+}
+
+
+/* .card:hover {
+    height: 250px;
+}*/
+
+h3 {
+    background-color: mediumpurple;
+    color: #fff;
+    padding: 5px;
+    display: inline;
+    font-size: 16px;
+}
+
+h5 {
+    display: inline;
+    font-size: 16px;
+    background-color: crimson;
+    color: #fff;
+    padding: 5px;
+}
+
+.card p {
+    line-height: 18px;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 8px;
+}
+
+.clear {
+    clear: both;
+    visibility: hidden;
+    margin: 0px;
+    padding: 0px;
+    height: 0;
+}
+
+.directorio {
+    display: flex;
+}
+
+.alphabet {
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, .11), 0 5px 15px 0 rgba(0, 0, 0, .08);
+}
